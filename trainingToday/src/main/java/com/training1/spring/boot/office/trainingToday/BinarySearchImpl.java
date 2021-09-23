@@ -7,9 +7,14 @@ public class BinarySearchImpl {
 	
 	@Autowired
 	private SortAlgorithm sortAlgorithm;
-	
+	/**
+	//Dependency Injection via Constructor
 	public BinarySearchImpl(SortAlgorithm sortAlgorithm) {
 		super();
+		this.sortAlgorithm=sortAlgorithm;
+	}**/
+	//Dependency injection via Setter
+	public void setSortAlgorithm(SortAlgorithm sortAlgorithm) {
 		this.sortAlgorithm=sortAlgorithm;
 	}
 	public int binarySearchFn(int[] numbers, int searchFor) {
