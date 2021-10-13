@@ -2,6 +2,7 @@ package com.springBoot.restfulWebServices2.restfulwebserviceswithboot2.user;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,6 +29,16 @@ public class UserResource {
     	}else {
     	return user;}
     }
+    
+    @DeleteMapping(path="/users/{id}")
+    public void deleteSpecificUser(@PathVariable int id) {
+    	User user = service.deleteOne(id);
+    	if(user==null) {
+    		throw new UserNotFoundException("id-"+id);
+    	}else {
+    	return user;}
+    }
+    
     @PostMapping("/users")
     public ResponseEntity<Object> createUser(@RequestBody User user) {
     	User savedUser=service.saveOne(user);
